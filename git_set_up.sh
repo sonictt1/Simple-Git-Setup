@@ -25,18 +25,22 @@ git config --global alias.st status
 printf "Generating ssh key.\n"
 ssh-keygen -t rsa -b 4096 -C "$email"
 
+#Git Bash and other lightweight bash shells for Windows.
 if [ "$OSTYPE" == "msys" ]
   then
     clip < ~/.ssh/id_rsa.pub
     printf "Your ssh key has been copied to the clipboard. Please copy it into your Git repositiory account (like your GitHub account).\n"
+#Cygwin
 elif [ "$OSTYPE" == "cygwin" ]
   then
     putclip < ~/.ssh/id_rsa.pub
     printf "Your ssh key has been copied to the clipboard. Please copy it into your Git repositiory account (like your GitHub account).\n"
+#OS X
 elif [ "$OSTYPE" == "darwin" ]
   then
     cat ~/.ssh/id_rsa.pub | pbcopy
     printf "Your ssh key has been copied to the clipboard. Please copy it into your Git repositiory account (like your GitHub account).\n"
+#Linux and miscellaneous.
 else
     printf "\n"
     cat ~/.ssh/id_rsa.pub
