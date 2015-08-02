@@ -1,3 +1,5 @@
+printf "Detected OS: $OSTYPE\n"
+
 printf "What is your name?\n"
 read name
 git config --global user.name "$name"
@@ -23,8 +25,26 @@ git config --global alias.st status
 printf "Generating ssh key.\n"
 ssh-keygen -t rsa -b 4096 -C "$email"
 
-clip < ~/.ssh/id_rsa.pub
-printf "Your ssh key has been copied to the clipboard. Please copy it into your Git repositiory account (like your GitHub account).\n"
-printf "All done! Please restart bash to be sure you changes take effect.\n"
+if [ "$OSTYPE" == "msys" ]
+  then
+    clip < ~/.ssh/id_rsa.pub
+    printf "Your ssh key has been copied to the clipboard. Please copy it into your Git repositiory account (like your GitHub account).\n"
+elif [ "$OSTYPE" == "cygwin" ]
+  then
+    putclip < ~/.ssh/id_rsa.pub
+    printf "Your ssh key has been copied to the clipboard. Please copy it into your Git repositiory account (like your GitHub account).\n"
+elif [ "$OSTYPE" == "darwin" ]
+  then
+    cat ~/.ssh/id_rsa.pub | pbcopy
+    printf "Your ssh key has been copied to the clipboard. Please copy it into your Git repositiory account (like your GitHub account).\n"
+else
+    printf "\n"
+    cat ~/.ssh/id_rsa.pub
+    printf "\nPlease copy the ssh key above to your Git repositiory account (like your GitHub account).\n"
+    printf "Press enter to continue."
+    read next
+fi
+
+printf "All done! Please restart bash to be sure your changes take effect.\n"
 printf "Press enter to finish the program.\n"
 read stuff
