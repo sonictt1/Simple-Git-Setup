@@ -1,4 +1,4 @@
-# simple_git_setup_windows
+# simple_git_setup
 A quick-and-dirty git bash setup.
 Designed specifically for:
 - Git Bash on Windows (tested)
