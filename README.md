@@ -3,7 +3,7 @@ A quick-and-dirty git bash setup.
 Designed specifically for:
 - Git Bash on Windows (tested)
 - Cygwin on Windows (untested)
-- OS X (untested)
+- OS X (tested)
 - Linux (tested)
 
 In Git Bash, Cygwin, and OS X the program should generate an ssh key and copy it to your clipboard. Linux and miscellaneous OSes will print the key to the terminal so the user may mark and copy it manually.
