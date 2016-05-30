@@ -2,7 +2,7 @@
 A quick-and-dirty git bash setup.
 Designed specifically for:
 - Git Bash on Windows (tested)
-- Cygwin on Windows (untested)
+- Bash on Ubuntu on Windows (tested)
 - OS X (tested)
 - Linux (tested)
 
